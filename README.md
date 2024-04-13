@@ -4,3 +4,6 @@ I hope to review these in the future as I gain insight and understanding of the 
 Mostly done in R, but occasionally using a bit of Python as some R packages don't seem to play nicely with Apple M hardware (or at least that is my assumption).
 
 Project Euler allows the publishing of solutions for the first 100 problems. I thank them for allowing me to discuss those problems and how to tackle them with R here.
+
+Check out Project Euler here:
+www.projecteuluer.net
