@@ -6,4 +6,4 @@ Mostly done in R, but occasionally using a bit of Python as some R packages don'
 Project Euler allows the publishing of solutions for the first 100 problems. I thank them for allowing me to discuss those problems and how to tackle them with R here.
 
 Check out Project Euler here:
-www.projecteuluer.net
+https://www.projecteuler.net
