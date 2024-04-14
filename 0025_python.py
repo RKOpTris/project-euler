@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#25
+# https://projecteuler.net/problem=25
+
 fib_last2 = [1, 1]
 fib_max = 0
 index = len(fib_last2)

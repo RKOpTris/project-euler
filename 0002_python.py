@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# https://projecteuler.net/problem=2
+
 div2 = []
 fib_nums = [1, 1]
 fib_max = 0
