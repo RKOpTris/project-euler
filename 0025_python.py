@@ -12,3 +12,5 @@ while len(str(fib_max)) < 1000:
     fib_last2 = [fib_last2[1], new_max]
     fib_max = new_max
     index += 1
+    
+print(index)
