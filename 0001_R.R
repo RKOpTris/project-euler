@@ -20,7 +20,7 @@ sumDivisibleBy <- function(n, target){
 }
 
 pe_solution <- function() sumDivisibleBy(3, 999) + sumDivisibleBy(5, 999) - sumDivisibleBy(15, 999)
-pe_solution
+pe_solution()
 
 microbenchmark::microbenchmark(my_solution(), pe_solution())
 
