@@ -46,9 +46,9 @@ for(i in 1:(max(num_choices) - 2)){
 
 for(i in 1:nrow(full_matrix)){
   if(i %% 2 == 0){
-    full_matrix[i, 10:9] <- num_choices[-full_matrix[i, 1:8]]
+    full_matrix[i, max(num_choices):(max(num_choices) - 1)] <- num_choices[-full_matrix[i, 1:(max(num_choices) - 2)]]
   } else {
-    full_matrix[i, 9:10] <- num_choices[-full_matrix[i, 1:8]]
+    full_matrix[i, (max(num_choices) - 1):max(num_choices)] <- num_choices[-full_matrix[i, 1:(max(num_choices) - 2)]]
   }
 }
 
@@ -58,4 +58,46 @@ full_matrix[1e6, ] - 1
 ### though I thought I'd found a nice solution, it still took longer than the quick PE calculation
 ### it was meant to be. prehaps there is a way at coming about the 1-millionth with out brute-
 ### forcing. but at least i got the answer.
+
+find_all_permutations <- function(nums = 3){
+  stopifnot(nums >= 3)
+  num_choices <- 1:nums
+  num_choices_length <- length(num_choices)
+  full_matrix <- matrix(NA, nrow = factorial(max(num_choices)), ncol = length(num_choices))
+  for(i in 1:(max(num_choices) - 2)){
+    start <- Sys.time()
+    div_factorial <- factorial(max(num_choices))
+    for(j in 1:i){
+      div_factorial <- div_factorial / rev(num_choices)[j]
+    }
+    if(i == 1){
+      full_matrix[, i] <- rep(num_choices, each = div_factorial)
+    } else {
+      uniques <- as.matrix(unique(full_matrix[, 1:(i - 1)]))
+      next_col <- c()
+      for(j in 1:nrow(uniques)){
+        current_nums <- uniques[j, ]
+        available_nums <- num_choices[-current_nums]
+        next_col <- c(next_col, rep(available_nums, each = div_factorial))
+      }
+      full_matrix[, i] <- next_col
+    }
+    finish <- Sys.time()
+    message(paste("Column", i, "computed in", finish - start))
+  }
+  
+  message(paste("Computing last two columns..."))
+  for(i in 1:nrow(full_matrix)){
+    if(i %% 2 == 0){
+      full_matrix[i, max(num_choices):(max(num_choices) - 1)] <- num_choices[-full_matrix[i, 1:(max(num_choices) - 2)]]
+    } else {
+      full_matrix[i, (max(num_choices) - 1):max(num_choices)] <- num_choices[-full_matrix[i, 1:(max(num_choices) - 2)]]
+    }
+  }
+  message("Done!")
+  full_matrix
+  
+}
+
+find_all_permutations(8)
 
