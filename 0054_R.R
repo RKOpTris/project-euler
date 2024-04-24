@@ -25,7 +25,9 @@
 
 ### some examples of hands/wins/scores see website above
 
-hands <- read.table("0054_poker.txt")
+pe_url <- url("https://projecteuler.net/resources/documents/0054_poker.txt")
+
+hands <- read.table(pe_url)
 
 ### convert the letters to numeric values to compare scores
 hands <- lapply(hands, function(x){
